@@ -460,9 +460,15 @@
 					<label>Ingresar</label>
 				</div>
 				<div class="input-inform">
+					@if ($errors->has('email'))
+                    <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span><br>
+                	@endif
 					<input type="email" name="email" id="email" placeholder="Correo" />
+					@if ($errors->has('password'))
+                     <span class="help-block"><strong>{{ $errors->first('password') }}</strong></span><br>
+                	@endif
 					<input type="password" name="password" id="password" placeholder="Contraseña" />
-					<a href="password/email">Olvido su contraseña?</a>			
+					<a href="password/email">¿Olvido su contraseña?</a>			
 				</div>
 				<div class="enter">
 					<label for="enter"></label>
@@ -471,28 +477,6 @@
 			</form>    
 		</div>
 	</div>
-	<!--
-	<script>
-		document.getElementById('enter').onclick = function() {
-			valid(document.getElementById('form'))
-		}
-
-		function valid(form) {
-			var fail = false,
-				name = form.name.value.trim(),
-				password = form.password.value.trim()
-			console.log()
-			if (!name)
-				fail = 'You have not entered the name';
-			else if (!password)
-				fail = 'You have not entered the password'
-			if (fail)
-				alert(fail)
-			else
-				alert('Good job')
-		}
-	</script> 
-	-->
 
 	<script>
 		(function() {
