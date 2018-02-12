@@ -36,6 +36,8 @@ Route::get('Cotizaciones1', ['as'=>'Cotizaciones1', 'uses'=>'PagesController@Cot
 Route::get('Proyectos/guardar',['as'=>'proyecto.store', 'uses'=>'ProyectoControlador@store']);
 Route::get('Proyectos',['as'=>'proyecto.index', 'uses'=>'ProyectoControlador@index']);
 Route::get('table/{P_id}', ['as' => 'showtable', 'uses' =>'ProyectoControlador@table']);
+//actividades asociadas a un proyecto
+Route::get('actividades', ['as' => 'actividad.store', 'uses' =>  'ProyectoControlador@store_act']);
 
 //metodos de manipulacion de cotizaciones
 Route::get('Cotizaciones',['as'=>'cotizacion.index', 'uses'=>'CotizacionControlador@index']);

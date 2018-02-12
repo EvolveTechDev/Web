@@ -86,6 +86,12 @@ class ProyectoControlador extends Controller
         //
     }
 
+    public function store_act(Request $request)
+    {
+        //
+    }
+
+
     /**
      * Show the form for editing the specified resource.
      *
@@ -128,6 +134,12 @@ class ProyectoControlador extends Controller
         return redirect()->route('showtable',$id);
     }
     public function table($id){
+        $actividades= DB::table('actividad AS act')
+                     ->join('proyecto AS proy', 'proy.P_id', 'act.P_id')
+                     ->join('users AS u', 'u.id', 'proy.U_id')
+                     ->where('U_id',auth()->user()->id)
+                     ->get();
+
         $proyectos = DB::table('proyecto')
         ->select('u1.name AS un','u2.name AS dn','u1.apellido AS ua', 'u2.apellido AS da', 'proyecto.P_id','proyecto.Categoria','proyecto.Fecha_I','proyecto.Fecha_E','proyecto.Porcentaje')
         ->join('users AS u1','u1.id','proyecto.U_id')
@@ -140,7 +152,7 @@ class ProyectoControlador extends Controller
         ->where('U_id',auth()->user()->id)
         ->where('P_id',$id)
         ->get();
-        return view('table', compact('proyectos','archivos'));
+        return view('table', compact('proyectos','archivos', 'actividades'));
     }
 
 

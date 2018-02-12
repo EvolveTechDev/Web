@@ -253,9 +253,8 @@
 							</div>
 
 
-							<!--Menu principal del proyecto-->
-						<div class="card card-nav-tabs">
-							<!---->
+						    <!--Menu principal del proyecto-->
+						    <div class="card card-nav-tabs">
                                 <div class="card-header" data-background-color="blue">
                                     <div class="nav-tabs-navigation">
                                         <div class="nav-tabs-wrapper">
@@ -274,28 +273,21 @@
                                                     </a>
                                                 </li>
                                                 <li class="">
-                                                    <a href="#settings" data-toggle="tab">
+                                                    <a href="#actividades" data-toggle="tab">
                                                         <i class="fa fa-building-o"></i> Actividades
                                                         <div class="ripple-container"></div>
                                                     </a>
-                                                </li>
-                                                <li class="">
-                                                    <a href="#pendientes" data-toggle="tab">
-                                                        <i class="fa fa-bullhorn"></i> Pendientes
-                                                        <div class="ripple-container"></div>
-                                                    </a>
-                                                </li>
-                                                
+                                                </li>                                                
                                             </ul>
                                         </div>
                                     </div>
                                 </div>
-                                <!--seccion de detalles-->
+                                
                                 <div class="card-content">
                                     <div class="tab-content">
+                                        <!--seccion de detalles-->
                                         <div class="tab-pane active" id="profile">
                                             <table class="table" style="min-height:150px;">
-                                            <!--DINAMICO!-->
                                                 <tbody>
                                                     @foreach($proyectos as $proyecto)
                                                    <tr>
@@ -319,14 +311,13 @@
                                                    </tr>
                                                    @endforeach
                                                 </tbody>
-                                            </table>
-                                            <!--end DINAMICO!-->
+                                            </table>  
                                         </div>
+                                        <!-- FIN seccion de detalles-->
+
+                                         <!--Seccion de muultimedia-->
                                         <div class="tab-pane" id="messages" style="min-height:150px;">
                                             <table class="table">
-                                            <!--Seccion de muultimedia-->
-
-												<!--DINAMICO!-->
                                                 <tbody>
                                                     @foreach($archivos as $archivo)
                                                     <tr>
@@ -346,68 +337,52 @@
                                                     @endforeach  
                                                 </tbody>
                                             </table>
-                                            <!--end DINAMICO!-->
-                                           
                                            <div><a href="#myModalmult" class="btn btn-outlined btn-primary" data-toggle="modal">Añadir Multimedia</a></div>
-
-
-
-
                                         </div>
-                                        <div class="tab-pane" id="settings" style="min-height:150px;">
-                                        <!--Seccion de actividades-->
-                                            <!--DINAMICO!-->
-
-											<div class="activity-feed">
-											  <div class="feed-item">
-											    <div class="date">Sep 25</div>
-											    <div class="text">Se subieron archivos multimedia <a href="#messages">Multimedia</a></div>
-											  </div>
-											  <div class="feed-item">
-											    <div class="date">Sep 24</div>
-											    <div class="text">Se actualizo el estatus del proyecto”</div>
-											  </div>
-											  <div class="feed-item">
-											    <div class="date">Sep 23</div>
-											    <div class="text">Se cancelo la primera cuota del proyecto<a href="Facturas"> Facturas</a></div>
-											  </div>
-											  <div class="feed-item">
-											    <div class="date">Sep 21</div>
-											    <div class="text">Comenzaste tu proyecto<a href="single-need.php">“ID nro ”</a></div>
-											  </div>
-											</div>
+                                         <!-- FIN Seccion de muultimedia-->
+                                        <div class="tab-pane" id="actividades" style="min-height:150px;">
+                                            <table class="table table-hover table-responsive table-striped">
+                                                <thead class="text-warning active">
+                                                    <th>Actividad</th>
+                                                    <th>Estatus</th>
+                                                    <th>Fecha de completación</th>
+                                                </thead>
+                                                <tbody>
+                                                @foreach($proyectos as $proyecto)
+                                                    @foreach ($actividades as $act)
+                                                    @if($act-> P_id == $proyecto -> P_id)
+                                                    <tr>
+                                                        <td>{{ $act-> descripcion}}</td>
+                                                        @if($act-> estatus === 'p')
+                                                            <td>Pendiente</td>
+                                                        @else
+                                                            <td>Hecho</td>
+                                                        @endif
+                                                        <td>{{ $act-> fecha_culminacion}}</td>
+                                                        <td>
+                                                            <button type="button" rel="tooltip" title="Hecho" class="btn btn-info btn-simple btn-xs">
+                                                                <a href=""><i class="material-icons">done</i></a> 
+                                                            </button>
+                                                        </td>
+                                                        <td>
+                                                            <button type="button" rel="tooltip" title="Eliminar" class="btn btn-info btn-simple btn-xs">
+                                                                <a href=""><i class="material-icons">delete</i></a>
+                                                            </button>
+                                                        </td>
+                                                    </tr>
+                                                    @endif
+                                                    @endforeach
+                                                 @endforeach
+                                                </tbody>
+                                            </table>
+                                            <div><a href="#modalAct" class="btn btn-outlined btn-info" data-toggle="modal">Añadir Actividad</a></div>
                                         </div>
-                                        	<!--end DINAMICO!-->
-
-                                        <div class="tab-pane" id="pendientes" style="min-height:150px;">
-                                        <!--seccion de pendientes-->
-										<!--DINAMICO!-->
-                                        <div class="error-notice">
-								          <div class="oaerror danger">
-								            <strong>Pendiente</strong> - Subir Imagenes.
-								          </div>
-								          <div class="oaerror info">
-								            <strong>Pendiente</strong> - Entrega.
-								          </div>
-								          
-								        </div>
-
-								        <!--end DINAMICO!-->
-
-
-
-                                        </div>
-
-
-
+                                        <!--FIN Seccion de actividades-->
                                     </div>
                                 </div>
                             </div>
-
-
-
-
 						</div>
+
 						<!--Chat-->
 						<div class="col-md-3">
                             <div class="card card-profile">
@@ -426,7 +401,8 @@
                                 </div>
                             </div>
                         </div>
-                        
+                        <!-- Fin Chat-->
+
                    	</div>                  
                 </div>
             </div>
@@ -455,6 +431,28 @@
                         <input type="submit" value="Añadir" style="text-align: right; margin: 10px;margin-bottom:10px;" class="btn btn-outlined btn-primary">        
                     </form>
                     @endforeach               
+                </div> 
+            </div><!-- /.modal-content -->
+        </div><!-- /.modal-dalog -->
+    </div>
+   <!--  FIN MODAL -->
+
+    <!--MODAL de añadir actividad-->
+
+    <div id="modalAct" class="modal fade in">
+        <div class="modal-dialog">           
+            <div class="modal-content">
+                <div class="modal-header">
+                     <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
+                     <h3 class="modal-title" id="lineModalLabel">Subir multimedia</h3>
+                </div>
+                <div class="modal-body">
+                    <form method="POST" action="{{route('actividad.store')}}" accept-charset="UTF-8" enctype="multipart/form-data" files=”true” >
+                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                        Descripción de la actividad:
+                        <input type="text" name="nombre"><br>
+                        <input type="submit" value="Añadir" style="text-align: right; margin: 10px;margin-bottom:10px;" class="btn btn-outlined btn-primary">        
+                    </form>               
                 </div> 
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dalog -->
