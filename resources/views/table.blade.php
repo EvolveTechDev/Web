@@ -361,12 +361,12 @@
                                                         <td>{{ $act-> fecha_culminacion}}</td>
                                                         <td>
                                                             <button type="button" rel="tooltip" title="Hecho" class="btn btn-info btn-simple btn-xs">
-                                                                <a href=""><i class="material-icons">done</i></a> 
+                                                                <a href="{{route('actividad.update', [$act -> Act_id, $proyecto->P_id])}}"><i class="material-icons">done</i></a> 
                                                             </button>
                                                         </td>
                                                         <td>
                                                             <button type="button" rel="tooltip" title="Eliminar" class="btn btn-info btn-simple btn-xs">
-                                                                <a href=""><i class="material-icons">delete</i></a>
+                                                                <a href="{{route('actividad.delete', [$act -> Act_id, $proyecto->P_id])}}"><i class="material-icons">delete</i></a>
                                                             </button>
                                                         </td>
                                                     </tr>
@@ -387,7 +387,7 @@
 						<div class="col-md-3">
                             <div class="card card-profile">
                                 <div class="card-avatar">
-                                    <a href="#pablo">
+                                    <a href="">
                                         <img class="img" src="{{asset('/img/faces/logo fondo.png')}}" />
                                     </a>
                                 </div>
@@ -397,7 +397,7 @@
                                     <p class="card-content">
                                         Tienes Alguna duda? Contacta con uno de nuestros profesionales inmediatamente, Estamos listos para ayudarte.
                                     </p>
-                                    <a href="#pablo" class="btn btn-primary btn-round">Chateemos</a>
+                                    <a href="" class="btn btn-primary btn-round">Chateemos</a>
                                 </div>
                             </div>
                         </div>
@@ -444,15 +444,17 @@
             <div class="modal-content">
                 <div class="modal-header">
                      <button type="button" class="close" data-dismiss="modal"><span aria-hidden="true">×</span><span class="sr-only">Cerrar</span></button>
-                     <h3 class="modal-title" id="lineModalLabel">Subir multimedia</h3>
+                     <h3 class="modal-title" id="lineModalLabel">Subir actividad</h3>
                 </div>
                 <div class="modal-body">
-                    <form method="POST" action="{{route('actividad.store')}}" accept-charset="UTF-8" enctype="multipart/form-data" files=”true” >
+                    @foreach($proyectos as $proyecto)
+                    <form method="POST" action="{{route('actividad.store', $proyecto->P_id)}}" accept-charset="UTF-8" enctype="multipart/form-data" files=”true” >
                         <input type="hidden" name="_token" value="{{csrf_token()}}">
                         Descripción de la actividad:
                         <input type="text" name="nombre"><br>
                         <input type="submit" value="Añadir" style="text-align: right; margin: 10px;margin-bottom:10px;" class="btn btn-outlined btn-primary">        
-                    </form>               
+                    </form>
+                    @endforeach               
                 </div> 
             </div><!-- /.modal-content -->
         </div><!-- /.modal-dalog -->

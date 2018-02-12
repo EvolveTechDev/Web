@@ -11,13 +11,10 @@
 |
 */
 
-/*Route::get('', function($nombre="Invitado"){
-	//return view('Proyectos');
-	return view('Proyectos',compact('nombre'));
-});
-*/
+//Mostrar home
 Route::get('home',['as'=>'proyecto.index', 'uses'=>'ProyectoControlador@index']);
 Route::get('',['as'=>'index', 'uses'=>'PagesController@index']);
+
 //Route::get('Proyectos', ['as'=>'Proyectos', 'uses'=>'PagesController@Proyectos']);
 
 //Route::get('Facturas', ['as'=>'Facturas', 'uses'=>'PagesController@Facturas']);
@@ -37,7 +34,21 @@ Route::get('Proyectos/guardar',['as'=>'proyecto.store', 'uses'=>'ProyectoControl
 Route::get('Proyectos',['as'=>'proyecto.index', 'uses'=>'ProyectoControlador@index']);
 Route::get('table/{P_id}', ['as' => 'showtable', 'uses' =>'ProyectoControlador@table']);
 //actividades asociadas a un proyecto
-Route::get('actividades', ['as' => 'actividad.store', 'uses' =>  'ProyectoControlador@store_act']);
+//Agregar
+Route::post('actividades/{P_id}', ['as' => 'actividad.store', 'uses' =>  'ProyectoControlador@storeact']);
+//Eliminar
+Route::get('actividades/{Act_id}/{P_id}/delete', ['as'=> 'actividad.delete', 'uses'=>'ProyectoControlador@destroyact']);
+//Cambiar status
+Route::get('actividades/{Act_id}/{P_id}', ['as'=> 'actividad.update', 'uses'=>'ProyectoControlador@updateact']);
+//Archivos
+//Agregar
+Route::post('table/{P_id}', ['as' => 'savetable', 'uses' =>'ProyectoControlador@storefile']);
+//eliminar
+Route::get('table/{P_id}/{A_id}/delete', ['as'=>'deletetable', 'uses'=>'ProyectoControlador@destroyfile']);
+//Descargar
+Route::get('table/{P_id}/{A_id}/download', ['as'=>'downloadtable', 'uses'=>'ProyectoControlador@downloadfile']);
+
+
 
 //metodos de manipulacion de cotizaciones
 Route::get('Cotizaciones',['as'=>'cotizacion.index', 'uses'=>'CotizacionControlador@index']);
@@ -102,12 +113,7 @@ Route::get('password/reset/{token}', ['as' => 'password.reset', 'uses' =>  'Auth
 Route::post('password/reset', ['as' => 'password.reset', 'uses' =>  'Auth\ResetPasswordController@reset']);
 
 
-//para archivos
-Route::post('table/{P_id}', ['as' => 'savetable', 'uses' =>'ProyectoControlador@storefile']);
-//eliminar
-Route::get('table/{P_id}/{A_id}/delete', ['as'=>'deletetable', 'uses'=>'ProyectoControlador@destroyfile']);
-//Descargar
-Route::get('table/{P_id}/{A_id}/download', ['as'=>'downloadtable', 'uses'=>'ProyectoControlador@downloadfile']);
+
 
 //mail
 Route::get('mailpapa', ['as'=>'mail', 'uses'=>'MailControlador@store']);

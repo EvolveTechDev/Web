@@ -86,11 +86,24 @@ class ProyectoControlador extends Controller
         //
     }
 
-    public function store_act(Request $request)
+    public function storeact(Request $request, $P_id)
     {
-        //
+        //Agregar actividad
+        DB::table('actividad')->insert([
+            "P_id"=> $P_id,
+            "descripcion"=>$request->input('nombre'),
+            "estatus"=> "p"
+        ]);
+        return redirect()->route('showtable', $P_id);
     }
 
+    public function destroyact($Act_id,$P_id)
+    {
+        //Eliminar actividad
+        DB::table('actividad')->where('Act_id', $Act_id)->delete();
+
+        return redirect()->route('showtable', $P_id);
+    }
 
     /**
      * Show the form for editing the specified resource.
@@ -110,9 +123,16 @@ class ProyectoControlador extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function updateact($Act_id,$P_id)
     {
-        //
+        //Cambiar status
+        DB::table('actividad')
+            ->where('Act_id', $Act_id)
+            ->update([
+                "fecha_culminacion"=> Carbon::now()
+            ]);
+
+        return redirect()->route('showtable', $P_id);
     }
 
     /**
