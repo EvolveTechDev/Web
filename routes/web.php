@@ -15,6 +15,7 @@
 Route::get('home',['as'=>'proyecto.index', 'uses'=>'ProyectoControlador@index']);
 Route::get('',['as'=>'index', 'uses'=>'PagesController@index']);
 
+
 //Route::get('Proyectos', ['as'=>'Proyectos', 'uses'=>'PagesController@Proyectos']);
 
 //Route::get('Facturas', ['as'=>'Facturas', 'uses'=>'PagesController@Facturas']);
@@ -81,14 +82,15 @@ Route::get('Cotizacionestag',['as'=>'cotizaciones.tags.index', 'uses'=>'Cotizaci
 Route::get('Facturastag',['as'=>'facturas.tags.index', 'uses'=>'FacturasControlador@indextag']);
 
 //elementos index
-/*
+
 Route::get('index', ['as'=>'table', 'index'=>'PagesController@index']);
 Route::get('Personalizado', ['as'=>'Personalizado', 'uses'=>'PagesController@Personalizado']);
 Route::get('Tienda-virtual', ['as'=>'Tienda-virtual', 'uses'=>'PagesController@Tiendavirtual']);
 Route::get('Web-corporativa', ['as'=>'Web-corporativa', 'uses'=>'PagesController@Webcorporativa']);
 Route::get('contacto', ['as'=>'contacto', 'uses'=>'PagesController@contacto']);
 Route::get('Contacto', ['as'=>'Contacto', 'uses'=>'PagesController@contacto']);
-esto no sirve  */
+Route::get('contacto_DP', ['as'=>'contactoDP', 'uses'=>'PagesController@contactoDP']);
+
 
 
 //para login

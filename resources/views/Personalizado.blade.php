@@ -326,7 +326,7 @@
 					<li>Sin limitaciones para tu progreso.</li>
 					<li>Desarrollo rápido y eficiente.</li>
 				</ul>
-				<a href="contacto" 
+				<a href="contacto_DP" 
 					style="
 						text-decoration: none;
 						margin-top: 1em;
@@ -422,13 +422,13 @@
 								WhatSapp : (+58) 412-5846439/424-1162133
 							</p>
 							<p style="margin-top: 7px;margin-bottom: 7px">
-								Información al cliente: <a href=""> info@Evolvetechdev.com</a>
+								Información al cliente: <a href=""> info@evolvetechdev.com</a>
 							</p>
 							<p style="margin-top: 7px;margin-bottom: 7px">
-								Atención al cliente: <a href="">contacto@Evolvetechdev.com</a>
+								Atención al cliente: <a href="">contacto@evolvetechdev.com</a>
 							</p>
 							<p style="margin-top: 7px;margin-bottom: 7px">
-								Negocios: <a href="">Negocios@Evolvetechdev.com</a>
+								Negocios: <a href="">negocios@evolvetechdev.com</a>
 							</p>
 							<p style="margin-top: 7px;margin-bottom: 7px">
 								Horario Online : 24 horas al dia.
@@ -441,7 +441,7 @@
 					<h2 style="font-size: 2.5em; color: white; text-align: center;text-shadow: 5px 5px 5px black;  ">
 						¿Tienes un proyecto en mente?
 					</h2>
-					<a  href="Contacto" class="btn btn-outlined btn-theme btn-lg btn-block"  data-wow-delay="0.7s">¡Comienza Ahora!</a>
+					<a  href="contacto_DP" class="btn btn-outlined btn-theme btn-lg btn-block"  data-wow-delay="0.7s">¡Comienza Ahora!</a>
 				</div>
 				</div>
 				<style type="text/css">

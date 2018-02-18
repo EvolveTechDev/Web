@@ -53,5 +53,8 @@ class PagesController extends Controller
     }    
     public function contacto(){
     return view('contacto');
+    }
+    public function contactoDP(){
+    return view('contacto_DP');
     } 
 }
