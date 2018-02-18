@@ -6,7 +6,7 @@
 	<title>Página web | EVOLVE</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/index2.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/v.css')}}">
-
+	<link rel="stylesheet" type="text/css" href="{{asset('/css/croc.css')}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
 	<link rel="shortcut icon" type="image/x-icon" href="{{asset('img/b.png')}}" >

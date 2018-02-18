@@ -6,6 +6,8 @@ use App\User2;
 use Illuminate\Http\Request;
 use DB;
 use Carbon\Carbon;
+use Hash;
+use Session;
 class usersControlador extends Controller
 {
     /**
@@ -91,9 +93,9 @@ class usersControlador extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
-    {
-        //
+    public function edit()
+    {   
+        return view('auth.edit');
     }
 
     /**
@@ -105,7 +107,60 @@ class usersControlador extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        if(!empty($request->input('password1'))){ //con contraseña
+            $user= User2::find($id);
+
+            $pass=$request->input('password1');
+            $passnew=$request->input('password2');
+            if(Hash::check($pass, $user->password)){
+                $this->validate($request,[
+                    'name'=> 'required|min:5|max:30',
+                    'email' => 'required|email|max:30|unique:users',
+                    'apellido'=> 'required|min:5|max:30',
+                    'cedula'=> 'required|min:5|max:30',
+                    ]);
+                
+                $user->apellido=$request->input('apellido');
+                $user->cedula=$request->input('cedula');
+                $user->email=$request->input('email');
+                $user->name=$request->input('name');
+                $user->password=bcrypt($passnew);
+                $user->updated_at=Carbon::now();
+                $user->pais=$request->input('pais');
+                $user->save();
+                return redirect()->route('proyecto.index');
+            }else{
+                Session::flash('alert-danger', 'Contraseña invalida');
+                return redirect()->back();
+            }
+
+        }else{//solo datos sin contraseña
+            $user= User2::find($id);
+            if ($user->email==$request->input('email')){ //mismo correo para quitar el unique
+                 $this->validate($request,[
+                        'name'=> 'required|min:5|max:30',
+                        'email' => 'required|email|max:30',
+                        'apellido'=> 'required|min:5|max:30',
+                        'cedula'=> 'required|min:5|max:30',
+                        ]);
+            }else{
+                 $this->validate($request,[
+                        'name'=> 'required|min:5|max:30',
+                        'email' => 'required|email|max:30|unique:users',
+                        'apellido'=> 'required|min:5|max:30',
+                        'cedula'=> 'required|min:5|max:30',
+                        ]); 
+                } 
+                    $user->apellido=$request->input('apellido');
+                    $user->cedula=$request->input('cedula');
+                    $user->email=$request->input('email');
+                    $user->name=$request->input('name');
+                    $user->updated_at=Carbon::now();
+                    $user->pais=$request->input('pais');
+                    $user->save();
+                    return redirect()->route('proyecto.index');
+            
+        }
     }
 
     /**

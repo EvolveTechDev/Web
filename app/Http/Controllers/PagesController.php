@@ -57,4 +57,7 @@ class PagesController extends Controller
     public function contactoDP(){
     return view('contacto_DP');
     } 
+    public function edit(){
+    return view('auth.edit');
+    } 
 }

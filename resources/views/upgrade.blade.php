@@ -208,7 +208,7 @@
                                 </a>
                                 <ul class="dropdown-menu">
                                     <li>
-                                        <a href="">Modificar Contraseña</a>
+                                        <a href="{{route('edit',auth()->user()->id)}}">Editar Perfil</a>
                                     </li>
                                     <li>
                                         <a href="{{route('logout')}}">Cerrar sesion</a>

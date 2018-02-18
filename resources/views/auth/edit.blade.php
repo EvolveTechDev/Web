@@ -227,94 +227,66 @@
             </nav>
             <div class="content">
                 <div class="container-fluid">
-                
-                   <!--TAbla de proyectos-->
-                    <div class="row">
-                        <div class="col-lg-9 col-md-12">
-                            <!-- BARRA BUSCAR -->
-                            <div class="form-group">
-                                <form role="form" method="get" action="{{route('proyectos.tags.index')}}">
-                                    <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                    <input class="form-control" type="text" id="text" placeholder="Buscar" required="" name="buscar">
-                                    <input class="btn btn-outlined btn-primary" style="padding-bottom: 1em;float:right; text-align:right;margin-bottom: 10px;" type="submit" value="Buscar" data-wow-delay="0.7s"></input>
-                                </form>
-                            </div>
-                            <div class="card">
-                                <div class="card-header" data-background-color="blue">
-                                    <h4 class="title">Tus Proyectos</h4>
+                    @foreach (['danger', 'warning', 'success', 'info'] as $msg)
+                        @if(Session::has('alert-' . $msg))
+                            <p class="alert alert-{{ $msg }}">{{ Session::get('alert-' . $msg) }}</p>
+                        @endif
+                    @endforeach 
+                   
+                    <div class="contact-form">
+
+                                    <form role="form" id="ender" method="post" action="{{route('update',auth()->user()->id)}}">
+                                        <input type="hidden" name="_token" value="{{csrf_token()}}">
+                                        <div class="form-group">
+                                            <label for="name">Nombre</label>
+                                            <input class="form-control" type="text" name="name" value="{{auth()->user()->name}}" required="true"></input>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="lastname">Apellido</label>
+                                            <input class="form-control" type="text" name="apellido" value="{{auth()->user()->apellido}}"  required="true"></input>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="documento">Documento de identidad o razón social</label>
+                                            <input class="form-control" type="text" name="cedula" value="{{auth()->user()->cedula}}"  required="true"></input>
+                                        </div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="email">E-mail</label>
+                                            <input class="form-control" type="email" name="email" value="{{auth()->user()->email}}"  required="true"></input>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="option">Pais</label>
+                                            <input class="form-control" type="text" id="pais" value="{{auth()->user()->pais}}" required name="pais">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Contraseña vieja</label>
+                                            <input class="form-control" type="password" name="password1" id="password1" placeholder="Ingresa tu contraseña" >
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="password">Contraseña nueva</label>
+                                            <input class="form-control" type="password" name="password2" id="password2" placeholder="Ingresar tu contraseña" >
+                                        </div>
+
+
+                                        <div style="padding-bottom: 1em;float:left; text-align:left;">
+                                           <!-- <button class="btn btn-outlined btn-blue2 btn-sm" style="padding-bottom: 1em;float:left; text-align:left;margin-bottom: 10px;" onclick="fuckGoBack()">Atrás</button> -->
+                                        </div>
+
+                                        <div style="padding-bottom: 1em;float:right; text-align:right;">
+                                            <input type="submit" value="Modificar"
+                                                class="btn btn-outlined btn-blue2 btn-sm" 
+                                                style="
+                                                    padding-bottom: 1em;
+                                                    float:right;
+                                                    text-align:right;
+                                                    margin-bottom: 10px;" 
+                                                data-wow-delay="0.7s">
+                                        </div>
+                                    </form>
                                 </div>
-                                <!--DINAMICO!-->
-                                <div class="card-content table-responsive">
-                                    <table class="table table-hover table-responsive table-striped">
-                                        <thead class="text-warning active">
-                                            <th>ID del proyecto</th>
-                                            <th>%</th>
-                                            <th>Fecha de inicio</th>
-                                            <th>Fecha de entrega</th>
-                                            <th>Categoria</th>
-                                            <th>Estatus</th>
-                                        </thead>
-                                        <tbody>
-                                            @foreach ($proyectos as $proyecto)
-                                            <tr>
-                                                <td><a href="{{ route('showtable',$proyecto->P_id) }}">{{ $proyecto->P_id }}</a></td>
-                                                <td>{{ $proyecto->Porcentaje }}</td>
-                                                <td>{{ $proyecto->Fecha_I }}</td>
-                                                <td>{{ $proyecto->Fecha_E }}</td>
-                                                <td>{{ $proyecto->Categoria }}</td>
-                                                <td>{{ $proyecto->Estatus }}</td>
-                                            </tr>
-                                            @endforeach
-                                            <!--
-                                            <tr onclick="location='table'">
-                                                <td>1</td>
-                                                <td>30%</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                            </tr>
-                                            <tr onclick="location='table'">
-                                                <td>2</td>
-                                                <td>25%</td>
-                                                <td>$23,789</td>
-                                                <td>Curaçao</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                            </tr>
-                                            <tr onclick="location='table'">
-                                                <td>3</td>
-                                                <td>25%</td>
-                                                <td>$23,789</td>
-                                                <td>Curaçao</td>
-                                                <td>$36,738</td>
-                                                <td>Niger</td>
-                                            </tr>
-                                            -->
-                                        </tbody>
-                                    </table>
-                                    <!--end DINAMICO!-->
-                                </div>
-                            </div>
-                        </div>
-                        <!--chat-->
-                        <div class="col-md-3">
-                            <div class="card card-profile">
-                                <div class="card-avatar">
-                                    <a href="#pablo">
-                                        <img class="img" src="{{asset('/img/faces/logo fondo.png')}}" />
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <h6 class="category text-gray">Evolution of tecnological develoment</h6>
-                                    <h4 class="card-title">Soporte en linea</h4>
-                                    <p class="card-content">
-                                        Tienes Alguna duda? Contacta con uno de nuestros profesionales inmediatamente, Estamos listos para ayudarte.
-                                    </p>
-                                    <a href="#pablo" class="btn btn-primary btn-round">Chateemos</a>
-                                </div>
-                            </div>
-                        </div>
+
+
+                        
                     </div>
                 </div>
             </div>

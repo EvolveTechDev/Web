@@ -15,7 +15,6 @@
 Route::get('home',['as'=>'proyecto.index', 'uses'=>'ProyectoControlador@index']);
 Route::get('',['as'=>'index', 'uses'=>'PagesController@index']);
 
-
 //Route::get('Proyectos', ['as'=>'Proyectos', 'uses'=>'PagesController@Proyectos']);
 
 //Route::get('Facturas', ['as'=>'Facturas', 'uses'=>'PagesController@Facturas']);
@@ -65,6 +64,8 @@ Route::get('Facturas',['as'=>'factura.index', 'uses'=>'FacturasControlador@index
 Route::get('upgrade/{F_id}', ['as' => 'upgrade', 'uses' =>'FacturasControlador@upgrade']);
 
 //manipulacion de usuarios
+Route::get('edit',['as'=>'edit', 'uses'=>'usersControlador@edit']);
+Route::post('update/{id}',['as'=>'update', 'uses'=>'usersControlador@update']);
 Route::get('users/guardar',['as'=>'users.store', 'uses'=>'usersControlador@store']);
 Route::group(['middleware'=>'desarrollador'], function () {
 		Route::get('Usuarios',['as'=>'users.index', 'uses'=>'usersControlador@index']);
