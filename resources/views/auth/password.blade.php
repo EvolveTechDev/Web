@@ -408,7 +408,7 @@
 		<img src="{{asset('img/logo enano bl.png')}}" id="menuIcon">
 		<ul id="deployMenu">
 			<li>
-				<a class="innerLink" href="#fc">
+				<a class="innerLink" href="{{route('index')}}">
 					Nosotros
 				</a>
 			</li>
@@ -417,23 +417,23 @@
 					Servicios
 				</a>
 				<ul class="drop">
-					<li><a href="Tienda-virtual">Tienda Virtual</a></li>
-					<li><a href="Web-corporativa">Web Corporativa</a></li>
-					<li><a href="Personalizado">Personalizado</a></li>
+					<li><a href="{{route('Tienda-virtual')}}">Tienda Virtual</a></li>
+					<li><a href="{{route('Web-corporativa')}}">Web Corporativa</a></li>
+					<li><a href="{{route('Personalizado')}}">Personalizado</a></li>
 				</ul>
 			</li>
 			<li>
-				<a class="innerLink" href="#como">
+				<a class="innerLink" href="{{route('index')}}">
 					Cómo lo hacemos
 				</a>
 			</li>
 			<li>
-				<a href="Contacto">
+				<a href="{{route('Contacto')}}">
 					Contáctanos
 				</a>
 			</li>
 			<li>
-				<a href="login">
+				<a href="{{route('login')}}">
 					Area de clientes
 				</a>
 			</li>
