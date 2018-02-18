@@ -232,7 +232,7 @@
                             <form role="form" method="get" action="{{route('usuarios.tags.index')}}">
                                     <input type="hidden" name="_token" value="{{csrf_token()}}">
                                     <input class="form-control" type="text" id="text" placeholder="Buscar" required="" name="buscar">
-                                    <input class="btn btn-outlined btn-blue2 btn-sm" style="padding-bottom: 1em;float:right; text-align:right;margin-bottom: 10px;" type="submit" value="Buscar" data-wow-delay="0.7s"></input>
+                                    <input class="btn btn-outlined btn-primary" style="padding-bottom: 1em;float:right; text-align:right;margin-bottom: 10px;" type="submit" value="Buscar" data-wow-delay="0.7s"></input>
                             </form>
                         </div>
                             <div class="card">

@@ -19,21 +19,29 @@ class CotizacionControlador extends Controller
     public function index()
     {
         //
-        $cotizaciones= DB::table('cotizacion')->get()->where('U_id',auth()->user()->id); //aqui filtraremos el id
+        $cotizaciones= DB::table('cotizacion')
+        ->where('U_id',auth()->user()->id)
+        ->get(); //aqui filtraremos el id
         return view('Cotizaciones1', compact('cotizaciones'));
     }
 
+    public $buscar;
+
     public function indextag(Request $request)
     {
-        $palabra=$request->input('buscar');
-        $cotizaciones= DB::table('cotizacion')->where('U_id',auth()->user()->id)
-        ->where('moneda','LIKE',"%$palabra%")
-        ->orWhere('C_id',$palabra)
-        ->orWhere('precio',$palabra)
-        ->orWhere('fecha_s',$palabra)
-        ->orWhere('fecha_c',$palabra)
-        ->orWhere('categoria','LIKE',"%$palabra%")
-        ->orWhere('U_id',$palabra)
+        $this-> buscar=$request->input('buscar');
+        $cotizaciones= DB::table('cotizacion')
+        ->where('U_id',auth()->user()->id)
+        ->where(function ($query) {
+                $palabra=$this-> buscar;
+                $query  ->where('moneda','LIKE',"%$palabra%")
+                        ->orWhere('C_id',$palabra)
+                        ->orWhere('precio',$palabra)
+                        ->orWhere('fecha_s',$palabra)
+                        ->orWhere('fecha_c',$palabra)
+                        ->orWhere('categoria','LIKE',"%$palabra%")
+                        ->orWhere('U_id',$palabra);
+            })
         ->get();
 
         return view('Cotizaciones1', compact('cotizaciones'));

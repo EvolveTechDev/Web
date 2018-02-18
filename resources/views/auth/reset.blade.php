@@ -433,7 +433,7 @@
 			</li>
 			<li>
 				<a href="login">
-					Area de clientes
+					Área de clientes
 				</a>
 			</li>
 		</ul>
@@ -459,8 +459,17 @@
 					<label>Cambio de Clave</label>
 				</div>
 				<div class="input-inform">
+					@if ($errors->has('email'))
+                    <span class="help-block"><strong>{{ $errors->first('email') }}</strong></span><br>
+                	@endif
 					<input type="input" name="email" placeholder="Email">
+					@if ($errors->has('token'))
+                     <span class="help-block"><strong>{{ $errors->first('token') }}</strong></span><br>
+                	@endif
 					<input type="hidden" name="token" value="{{ $token }}">
+					@if ($errors->has('password'))
+                     <span class="help-block"><strong>{{ $errors->first('password') }}</strong></span><br>
+                	@endif
 					<input type="password" name="password" id="password" placeholder="Contraseña" />
 					<input type="password" name="password_confirmation" id="password_confirmation" placeholder="Confirmar Contraseña" />
 					@foreach (['danger', 'warning', 'success', 'info'] as $msg)

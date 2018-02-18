@@ -17,26 +17,34 @@ class ProyectoControlador extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+    public $buscar;
+
     public function index()
     {
         //
-        $proyectos= DB::table('proyecto')->get()->where('U_id',auth()->user()->id); //aqui filtraremos el id
+        $proyectos= DB::table('proyecto')
+        ->where('U_id',auth()->user()->id)
+        ->orWhere('D_id',auth()->user()->id)
+        ->get(); //aqui filtraremos el id
         return view('Proyectos', compact('proyectos'));
     }
 
         public function indextag(Request $request)
     {
-        $palabra=$request->input('buscar');
-        $proyectos= DB::table('proyecto')->where('U_id',auth()->user()->id)
-        ->Where('P_id',$palabra)
-        ->orWhere('U_id',$palabra)
-        ->orWhere('F_id',$palabra)
-        ->orWhere('D_id',$palabra)
-        ->orWhere('categoria','Like',"%$palabra%")
-        ->orWhere('estatus','Like',"%$palabra%")
-        ->orWhere('F_id',$palabra)
-        ->orWhere('fecha_i',"%$palabra%")
-        ->orWhere('fecha_e',"%$palabra%")
+        $this-> buscar=$request->input('buscar');
+        $proyectos= DB::table('proyecto')
+        ->where('U_id',auth()->user()->id)
+        ->where(function ($query) {
+                $palabra=$this-> buscar;
+                $query  ->where('P_id',$palabra)
+                        ->orWhere('U_id',$palabra)
+                        ->orWhere('F_id',$palabra)
+                        ->orWhere('D_id',$palabra)
+                        ->orWhere('categoria','Like',"%$palabra%")
+                        ->orWhere('estatus','Like',"%$palabra%")
+                        ->orWhere('fecha_i',"%$palabra%")
+                        ->orWhere('fecha_e',"%$palabra%");
+            })
         ->get(); 
         return view('Proyectos', compact('proyectos'));
     }
@@ -157,7 +165,10 @@ class ProyectoControlador extends Controller
         $actividades= DB::table('actividad AS act')
                      ->join('proyecto AS proy', 'proy.P_id', 'act.P_id')
                      ->join('users AS u', 'u.id', 'proy.U_id')
-                     ->where('U_id',auth()->user()->id)
+                     ->where(function ($query) {
+                            $query  ->where('U_id',auth()->user()->id)
+                                    ->orWhere('D_id',auth()->user()->id);
+                            })
                      ->get();
 
         $proyectos = DB::table('proyecto')
@@ -165,12 +176,15 @@ class ProyectoControlador extends Controller
         ->join('users AS u1','u1.id','proyecto.U_id')
         ->join('users AS u2','u2.id','proyecto.D_id')
         ->where('P_id',$id)
-        ->where('U_id',auth()->user()->id)
+        ->where(function ($query) {
+            $query  ->where('U_id',auth()->user()->id)
+                    ->orWhere('D_id',auth()->user()->id);
+            })
         ->get();
 
         $archivos = DB::table('archivo')
-        ->where('U_id',auth()->user()->id)
         ->where('P_id',$id)
+        ->where('U_id',auth()->user()->id)
         ->get();
         return view('table', compact('proyectos','archivos', 'actividades'));
     }

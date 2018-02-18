@@ -19,16 +19,22 @@ class usersControlador extends Controller
     return view('Usuarios', compact('ussers'));
     }
 
+    public $buscar;
+
     public function indextag(Request $request)
     {
-    $palabra=$request->input('buscar');
-    $ussers= DB::table('users')->where('tipo_user','u')
-        ->Where('id',$palabra)
-        ->orWhere('name','Like',"%$palabra%")
-        ->orWhere('apellido','Like',"%$palabra%")
-        ->orWhere('pais','Like',"%$palabra%")
-        ->orWhere('cedula','Like',"%$palabra%")
-        ->orWhere('email','Like',"%$palabra%")
+    $this-> buscar=$request->input('buscar');
+    $ussers= DB::table('users')
+    ->where('tipo_user','u')
+    ->where(function ($query) {
+                $palabra=$this-> buscar;
+                $query  ->where('id',$palabra)
+            ->orWhere('name','Like',"%$palabra%")
+            ->orWhere('apellido','Like',"%$palabra%")
+            ->orWhere('pais','Like',"%$palabra%")
+            ->orWhere('cedula','Like',"%$palabra%")
+            ->orWhere('email','Like',"%$palabra%");
+            })
         ->get();
 
     return view('Usuarios', compact('ussers'));

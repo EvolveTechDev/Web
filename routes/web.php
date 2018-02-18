@@ -36,10 +36,6 @@ Route::get('table/{P_id}', ['as' => 'showtable', 'uses' =>'ProyectoControlador@t
 //actividades asociadas a un proyecto
 //Agregar
 Route::post('actividades/{P_id}', ['as' => 'actividad.store', 'uses' =>  'ProyectoControlador@storeact']);
-//Eliminar
-Route::get('actividades/{Act_id}/{P_id}/delete', ['as'=> 'actividad.delete', 'uses'=>'ProyectoControlador@destroyact']);
-//Cambiar status
-Route::get('actividades/{Act_id}/{P_id}', ['as'=> 'actividad.update', 'uses'=>'ProyectoControlador@updateact']);
 //Archivos
 //Agregar
 Route::post('table/{P_id}', ['as' => 'savetable', 'uses' =>'ProyectoControlador@storefile']);
@@ -72,6 +68,10 @@ Route::get('users/guardar',['as'=>'users.store', 'uses'=>'usersControlador@store
 Route::group(['middleware'=>'desarrollador'], function () {
 		Route::get('Usuarios',['as'=>'users.index', 'uses'=>'usersControlador@index']);
 		Route::get('Usuariostag',['as'=>'usuarios.tags.index', 'uses'=>'usersControlador@indextag']);
+		//Eliminar
+		Route::get('actividades/{Act_id}/{P_id}/delete', ['as'=> 'actividad.delete', 'uses'=>'ProyectoControlador@destroyact']);
+		//Cambiar status
+		Route::get('actividades/{Act_id}/{P_id}', ['as'=> 'actividad.update', 'uses'=>'ProyectoControlador@updateact']);
 	});
 
 
@@ -117,3 +117,4 @@ Route::post('password/reset', ['as' => 'password.reset', 'uses' =>  'Auth\ResetP
 
 //mail
 Route::get('mailpapa', ['as'=>'mail', 'uses'=>'MailControlador@store']);
+Route::get('mailpa', ['as'=>'mailtest', 'uses'=>'MailControlador@show']);

@@ -19,5 +19,9 @@ class MailControlador extends Controller
     return Redirect::to('home');
     }
 
+    public function show(){
+    	return config('app.url');
+    }
+
 
 }

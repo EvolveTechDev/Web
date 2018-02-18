@@ -324,11 +324,11 @@
                                                         <td>{{ $archivo->nombre }}</td>
                                                         <td>{{ $archivo->fecha_carga }}</td>
                                                         <td class="td-actions text-right">
-                                                            
+                                                        @if(auth()-> user() -> tipo_user ==='d')                                                            
                                                             <button type="button" rel="tooltip" title="Eliminar" class="btn btn-danger btn-simple btn-xs">
-                                                                <a href="{{route('deletetable', [$archivo->P_id, $archivo->A_id])}}"><i class="material-icons">close</i></a>
+                                                                <a href="{{route('deletetable', [$archivo->P_id, $archivo->A_id])}}"><i class="material-icons">delete</i></a>
                                                             </button>
-
+                                                        @endif
                                                             <button type="button" rel="tooltip" title="Descargar" class="btn btn-info btn-simple btn-xs">
                                                                 <a href="{{route('downloadtable', [$archivo->P_id, $archivo->A_id])}}"> <i class="material-icons">file_download</i></a> 
                                                             </button>
@@ -359,6 +359,7 @@
                                                             <td>Hecho</td>
                                                         @endif
                                                         <td>{{ $act-> fecha_culminacion}}</td>
+                                                        @if(auth()-> user() -> tipo_user ==='d')
                                                         <td>
                                                             <button type="button" rel="tooltip" title="Hecho" class="btn btn-info btn-simple btn-xs">
                                                                 <a href="{{route('actividad.update', [$act -> Act_id, $proyecto->P_id])}}"><i class="material-icons">done</i></a> 
@@ -369,13 +370,14 @@
                                                                 <a href="{{route('actividad.delete', [$act -> Act_id, $proyecto->P_id])}}"><i class="material-icons">delete</i></a>
                                                             </button>
                                                         </td>
+                                                        @endif
                                                     </tr>
                                                     @endif
                                                     @endforeach
                                                  @endforeach
                                                 </tbody>
                                             </table>
-                                            <div><a href="#modalAct" class="btn btn-outlined btn-info" data-toggle="modal">Añadir Actividad</a></div>
+                                            <div><a href="#modalAct" class="btn btn-outlined btn-primary" data-toggle="modal">Añadir Actividad</a></div>
                                         </div>
                                         <!--FIN Seccion de actividades-->
                                     </div>

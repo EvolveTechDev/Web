@@ -26,15 +26,20 @@ class FacturasControlador extends Controller
         return view('Facturas', compact('facturas'));
     }
 
+    public $buscar;
+
     public function indextag(Request $request)
     {
-        $palabra=$request->input('buscar');
+        $this-> buscar=$request->input('buscar');
         $facturas= DB::table('factura')
         ->join('users','U_id','=','id')
         ->where('U_id',auth()->user()->id)
-        ->Where('C_id',$palabra)
-        ->orWhere('estatus','Like',"%$palabra%")
-        ->orWhere('F_id',$palabra)
+        ->where(function ($query) {
+                $palabra=$this-> buscar;
+                $query  ->where('C_id',$palabra)
+                        ->orWhere('estatus','Like',"%$palabra%")
+                        ->orWhere('F_id',$palabra);
+                })
         ->get(); //aqui filtraremos el id
         return view('Facturas', compact('facturas'));
     }
