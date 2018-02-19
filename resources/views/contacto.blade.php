@@ -11,7 +11,7 @@
 	<meta charset="utf-8">
 	<link rel="shortcut icon" type="image/x-icon" href="{{asset('img/b.png')}}" >
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-	<link href="{{asset('css/material-dashboard.css?v=1.2.0')}}" rel="stylesheet" >
+	<link href="{{asset('css/material-dashboard_home.css?v=1.2.0')}}" rel="stylesheet" >
 	<style type="text/css">
 		#duplex li {
 			background: url('{{asset('imgs/qw.png')}}') top left no-repeat;
