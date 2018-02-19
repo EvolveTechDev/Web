@@ -27,7 +27,7 @@ Route::get('',['as'=>'index', 'uses'=>'PagesController@index']);
 
 //Route::get('template', ['as'=>'template', 'uses'=>'PagesController@template']);
 
-Route::get('Cotizaciones1', ['as'=>'Cotizaciones1', 'uses'=>'PagesController@Cotizaciones1']);
+//Route::get('Cotizaciones1', ['as'=>'Cotizaciones1', 'uses'=>'PagesController@Cotizaciones1']);
 
 //metodos de manipulacion de proyecto
 Route::get('Proyectos/guardar',['as'=>'proyecto.store', 'uses'=>'ProyectoControlador@store']);

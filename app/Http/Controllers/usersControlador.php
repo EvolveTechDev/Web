@@ -113,13 +113,26 @@ class usersControlador extends Controller
             $pass=$request->input('password1');
             $passnew=$request->input('password2');
             if(Hash::check($pass, $user->password)){
-                $this->validate($request,[
-                    'name'=> 'required|min:5|max:30',
-                    'email' => 'required|email|max:30|unique:users',
-                    'apellido'=> 'required|min:5|max:30',
-                    'cedula'=> 'required|min:5|max:30',
-                    ]);
-                
+                if ($user->email==$request->input('email')){ //mismo correo para quitar el unique
+                    $this->validate($request,[
+                        'name'=> 'required|min:5|max:30',
+                        'email' => 'required|email|max:30',
+                        'apellido'=> 'required|min:5|max:30',
+                        'cedula'=> 'required|min:5|max:30',
+                        'pais'=> 'required|min:3|max:20',
+                        'password2'=> 'required|min:6|max:30'
+                        ]);
+                    }else{
+                        $this->validate($request,[
+                        'name'=> 'required|min:5|max:30',
+                        'email' => 'required|email|max:30|unique:users',
+                        'apellido'=> 'required|min:5|max:30',
+                        'cedula'=> 'required|min:5|max:30',
+                        'pais'=> 'required|min:3|max:20',
+                        'password2'=> 'required|min:6|max:30'
+                        ]);
+
+                    }
                 $user->apellido=$request->input('apellido');
                 $user->cedula=$request->input('cedula');
                 $user->email=$request->input('email');
@@ -142,6 +155,7 @@ class usersControlador extends Controller
                         'email' => 'required|email|max:30',
                         'apellido'=> 'required|min:5|max:30',
                         'cedula'=> 'required|min:5|max:30',
+                        'pais'=> 'required|min:3|max:20'
                         ]);
             }else{
                  $this->validate($request,[
@@ -149,6 +163,7 @@ class usersControlador extends Controller
                         'email' => 'required|email|max:30|unique:users',
                         'apellido'=> 'required|min:5|max:30',
                         'cedula'=> 'required|min:5|max:30',
+                        'pais'=> 'required|min:3|max:20'
                         ]); 
                 } 
                     $user->apellido=$request->input('apellido');
