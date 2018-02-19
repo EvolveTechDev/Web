@@ -47,12 +47,14 @@ Route::get('table/{P_id}/{A_id}/download', ['as'=>'downloadtable', 'uses'=>'Proy
 
 
 //metodos de manipulacion de cotizaciones
-Route::get('Cotizaciones',['as'=>'cotizacion.index', 'uses'=>'CotizacionControlador@index']);
-Route::get('template/{F_id}', ['as' => 'template', 'uses' =>'CotizacionControlador@template']);
-Route::post('Cotizaciones/GuardarWeb',['as'=>'Cotizacion.storeWebCorporativa', 'uses'=>'CotizacionControlador@storeWebCorporativa']);
-Route::post('Cotizaciones/GuardarTienda',['as'=>'Cotizacion.storeTiendaOnline', 'uses'=>'CotizacionControlador@storeTiendaOnline']);
-Route::post('Cotizaciones/GuardarDesarrollo',['as'=>'Cotizacion.storeDesarrolloPersonalizado', 'uses'=>'CotizacionControlador@storeDesarrolloPersonalizado']);
-Route::get('template/{C_id}/delete',['as'=>'cotizacion.destroy', 'uses'=>'CotizacionControlador@destroy']);
+Route::group(['middleware'=>'auth_login'], function () {
+	Route::get('Cotizaciones',['as'=>'cotizacion.index', 'uses'=>'CotizacionControlador@index']);
+	Route::get('template/{F_id}', ['as' => 'template', 'uses' =>'CotizacionControlador@template']);
+	Route::post('Cotizaciones/GuardarWeb',['as'=>'Cotizacion.storeWebCorporativa', 'uses'=>'CotizacionControlador@storeWebCorporativa']);
+	Route::post('Cotizaciones/GuardarTienda',['as'=>'Cotizacion.storeTiendaOnline', 'uses'=>'CotizacionControlador@storeTiendaOnline']);
+	Route::post('Cotizaciones/GuardarDesarrollo',['as'=>'Cotizacion.storeDesarrolloPersonalizado', 'uses'=>'CotizacionControlador@storeDesarrolloPersonalizado']);
+	Route::get('template/{C_id}/delete',['as'=>'cotizacion.destroy', 'uses'=>'CotizacionControlador@destroy']);
+});
 //las vergas dobles...
 Route::post('Cotizaciones/GuardarWeb1',['as'=>'Cotizacion.storeWebCorporativa2', 'uses'=>'CotizacionControlador@storeWebCorporativa2']);
 Route::post('Cotizaciones/GuardarTienda1',['as'=>'Cotizacion.storeTiendaOnline2', 'uses'=>'CotizacionControlador@storeTiendaOnline2']);
