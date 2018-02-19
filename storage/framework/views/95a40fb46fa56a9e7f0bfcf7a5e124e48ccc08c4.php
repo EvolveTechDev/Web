@@ -1,5 +1,3 @@
-<!-- HOLAAA tu -->
-
 <!DOCTYPE html>
 <html lang="ES-ve">
 <head>
@@ -244,7 +242,7 @@
 			<h2 class="title custom-font text-black" style="font-size: 2em;margin-top: 10px;">¡Comienza Ahora!</h2>
 					<div class="card">
 						<div class="card-header" data-background-color="blue">
-							<h4 class="title">Que quieres hacer hoy?</h4>
+							<h4 class="title">¿Qué quieres hacer hoy?</h4>
 						</div>
 						<div class="card-content table-responsive">
 							<header>

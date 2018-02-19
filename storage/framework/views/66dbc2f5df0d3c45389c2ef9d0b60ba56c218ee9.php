@@ -9,7 +9,7 @@
 	<meta charset="utf-8">
 	<link rel="shortcut icon" type="image/x-icon" href="<?php echo e(asset('img/b.png')); ?>" >
 	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
-	<link href="<?php echo e(asset('css/material-dashboard.css?v=1.2.0')); ?>" rel="stylesheet" >
+	<link href="<?php echo e(asset('css/material-dashboard_home.css?v=1.2.0')); ?>" rel="stylesheet" >
 	<style type="text/css">
 		#duplex li {
 			background: url('<?php echo e(asset('imgs/qw.png')); ?>') top left no-repeat;
@@ -242,22 +242,46 @@
 			<h2 class="title custom-font text-black" style="font-size: 2em;margin-top: 10px;">¡Comienza Ahora!</h2>
 					<div class="card">
 						<div class="card-header" data-background-color="blue">
-							<h4 class="title">Desarrollo Personalizado</h4>
+							<h4 class="title">¿Qué quieres hacer hoy?</h4>
 						</div>
 						<div class="card-content table-responsive">
 							<header>
-								<div id="picker-2" class="active">Detalles</div>
+								<div id="picker-1" class="active">Proyecto</div>
+								<div id="picker-2">Detalles</div>
 								<div id="picker-3">Contacto</div>
 							</header>
+							<section id="proyecto" style="display: flex">
+								<div class="contact-switcher" target="app-Desarrollo">
+									<img src="<?php echo e(asset('img/servidef23.png')); ?>">
+									<h4>Desarrollo Personalizado</h4>
+								</div>
+							</section>
 							<section id="detalles">
+								<div id="app-Web">
+									
+								</div>
+								<div id="app-Tienda">
+									
+								</div>
 								<div id="app-Desarrollo">
 									<div class="contact-form">
-										<form role="form" method="post" action="<?php echo e(route('Cotizacion.storeDesarrolloPersonalizado2')); ?>">
+										<form role="form" method="POST" action="<?php echo e(route('Cotizacion.storeDesarrolloPersonalizado2')); ?>" accept-charset="UTF-8" enctype="multipart/form-data" >
                                             <input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
-											<label>
-												Escribe los requerimientos de tu producto
-											</label>
-											<textarea name="personalized-message" class="form-control"></textarea>
+                                            <div class="form-group">
+												<label for="opcion2">¿Cuántas secciones deseas?</label>
+												<select class="form-control" name="cant-secciones" id="opcion2">
+													<option value="1">1</option>
+													<option value="1-3">1-3</option>
+													<option value="3-5">3-5</option>
+													<option value="5-7">5-7</option>
+													<option value="8-12">8-12</option>
+													<option value="12+">12+</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<label>Escribe los requerimientos de tu producto</label>
+												<textarea name="personalized-message" class="form-control"></textarea>
+											</div>
 											<button class="btn btn-outlined btn-blue2 btn-sm" style="padding-bottom: 1em;float:right; text-align:right;margin-bottom: 10px;" onclick="transitionHandler()" data-wow-delay="0.7s">Siguiente</button>
 											<button class="btn btn-outlined btn-blue2 btn-sm" style="padding-bottom: 1em;float:left; text-align:left;margin-bottom: 10px;" onclick="fuckGoBack()">Atrás</button>
 										</form>
@@ -270,8 +294,8 @@
 									Su respuesta llegará a su correo en menos de 24 horas.
 								</h4>
 								<div class="contact-form">
-
-									<form role="form" id="ender" method="post" action="<?php echo e(route('Cotizacion.storeDesarrolloPersonalizado2')); ?>">
+									<form role="form" id="ender" method="POST" action="<?php echo e(route('Cotizacion.storeDesarrolloPersonalizado2')); ?>" accept-charset="UTF-8" enctype="multipart/form-data">
+										<input type="hidden" name="_token" value="<?php echo e(csrf_token()); ?>">
 										<div class="form-group">
 											<label for="name">Ingrese su nombre:</label>
 											<input class="form-control" type="text" name="name" placeholder="Pedro" required="true"></input>

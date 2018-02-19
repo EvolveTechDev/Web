@@ -56,7 +56,13 @@ class PagesController extends Controller
     }
     public function contactoDP(){
     return view('contacto_DP');
+    }
+    public function contactoWC(){
+    return view('contacto_WC');
     } 
+    public function contactoTV(){
+    return view('contacto_TV');
+    }  
     public function edit(){
     return view('auth.edit');
     } 

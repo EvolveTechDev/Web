@@ -27,8 +27,6 @@ Route::get('',['as'=>'index', 'uses'=>'PagesController@index']);
 
 //Route::get('template', ['as'=>'template', 'uses'=>'PagesController@template']);
 
-Route::get('Cotizaciones1', ['as'=>'Cotizaciones1', 'uses'=>'PagesController@Cotizaciones1']);
-
 //metodos de manipulacion de proyecto
 Route::get('Proyectos/guardar',['as'=>'proyecto.store', 'uses'=>'ProyectoControlador@store']);
 Route::get('Proyectos',['as'=>'proyecto.index', 'uses'=>'ProyectoControlador@index']);
@@ -50,12 +48,14 @@ Route::get('table/{P_id}/{A_id}/download', ['as'=>'downloadtable', 'uses'=>'Proy
 Route::group(['middleware'=>'auth_login'], function () {
 	Route::get('Cotizaciones',['as'=>'cotizacion.index', 'uses'=>'CotizacionControlador@index']);
 	Route::get('template/{F_id}', ['as' => 'template', 'uses' =>'CotizacionControlador@template']);
+	//Nueva cotizacion desde el modulo
 	Route::post('Cotizaciones/GuardarWeb',['as'=>'Cotizacion.storeWebCorporativa', 'uses'=>'CotizacionControlador@storeWebCorporativa']);
 	Route::post('Cotizaciones/GuardarTienda',['as'=>'Cotizacion.storeTiendaOnline', 'uses'=>'CotizacionControlador@storeTiendaOnline']);
 	Route::post('Cotizaciones/GuardarDesarrollo',['as'=>'Cotizacion.storeDesarrolloPersonalizado', 'uses'=>'CotizacionControlador@storeDesarrolloPersonalizado']);
+	//Eliminar Cotizacion
 	Route::get('template/{C_id}/delete',['as'=>'cotizacion.destroy', 'uses'=>'CotizacionControlador@destroy']);
 });
-//las vergas dobles...
+//Registrar cotizaciones desde formulario pagina principal
 Route::post('Cotizaciones/GuardarWeb1',['as'=>'Cotizacion.storeWebCorporativa2', 'uses'=>'CotizacionControlador@storeWebCorporativa2']);
 Route::post('Cotizaciones/GuardarTienda1',['as'=>'Cotizacion.storeTiendaOnline2', 'uses'=>'CotizacionControlador@storeTiendaOnline2']);
 Route::post('Cotizaciones/GuardarDesarrollo1',['as'=>'Cotizacion.storeDesarrolloPersonalizado2', 'uses'=>'CotizacionControlador@storeDesarrolloPersonalizado2']);
@@ -85,7 +85,6 @@ Route::get('Cotizacionestag',['as'=>'cotizaciones.tags.index', 'uses'=>'Cotizaci
 Route::get('Facturastag',['as'=>'facturas.tags.index', 'uses'=>'FacturasControlador@indextag']);
 
 //elementos index
-
 Route::get('index', ['as'=>'table', 'index'=>'PagesController@index']);
 Route::get('Personalizado', ['as'=>'Personalizado', 'uses'=>'PagesController@Personalizado']);
 Route::get('Tienda-virtual', ['as'=>'Tienda-virtual', 'uses'=>'PagesController@Tiendavirtual']);
@@ -93,6 +92,8 @@ Route::get('Web-corporativa', ['as'=>'Web-corporativa', 'uses'=>'PagesController
 Route::get('contacto', ['as'=>'contacto', 'uses'=>'PagesController@contacto']);
 Route::get('Contacto', ['as'=>'Contacto', 'uses'=>'PagesController@contacto']);
 Route::get('contacto_DP', ['as'=>'contactoDP', 'uses'=>'PagesController@contactoDP']);
+Route::get('contacto_WC', ['as'=>'contactoWC', 'uses'=>'PagesController@contactoWC']);
+Route::get('contacto_TV', ['as'=>'contactoTV', 'uses'=>'PagesController@contactoTV']);
 
 
 

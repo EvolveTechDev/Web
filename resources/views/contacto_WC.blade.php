@@ -4,7 +4,7 @@
 	<title>Página web | EVOLVE</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/index2.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/v.css')}}">
-
+	<link rel="stylesheet" type="text/css" href="{{asset('/css/croc.css')}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
 	<link rel="shortcut icon" type="image/x-icon" href="{{asset('img/b.png')}}" >
@@ -251,23 +251,24 @@
 								<div id="picker-3">Contacto</div>
 							</header>
 							<section id="proyecto" style="display: flex">
-								<div class="contact-switcher" target="app-Desarrollo">
-									<img src="{{asset('img/servidef23.png')}}">
-									<h4>Desarrollo Personalizado</h4>
+								<div class="contact-switcher" target="app-Web">
+									<img src="{{asset('img/servidef21.png')}}">
+									<h4>Web Corporativa</h4>									
 								</div>
 							</section>
 							<section id="detalles">
 								<div id="app-Web">
-									
-								</div>
-								<div id="app-Tienda">
-									
-								</div>
-								<div id="app-Desarrollo">
 									<div class="contact-form">
-										<form role="form" method="POST" action="{{route('Cotizacion.storeDesarrolloPersonalizado2')}}" accept-charset="UTF-8" enctype="multipart/form-data" >
+										<form role="form" method="post" action="{{route('Cotizacion.storeWebCorporativa2')}}" accept-charset="UTF-8" enctype="multipart/form-data">
                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                            <div class="form-group">
+											<div class="form-group">
+												<label for="opcion">¿Qué tipo de página deseas?</label>
+												<select class="form-control" name="tipo_web" id="opcion">
+													<option value="personal">Web Personal</option>
+													<option value="corporativa">Web Coporativa</option>
+												</select>
+											</div>
+											<div class="form-group">
 												<label for="opcion2">¿Cuántas secciones deseas?</label>
 												<select class="form-control" name="cant-secciones" id="opcion2">
 													<option value="1">1</option>
@@ -279,22 +280,64 @@
 												</select>
 											</div>
 											<div class="form-group">
-												<label>Escribe los requerimientos de tu producto</label>
-												<textarea name="personalized-message" class="form-control"></textarea>
+												<label for="opcion3">¿Deseas que tu página web sea autoadministrable?</label>
+												<select class="form-control" name="autoadministrable" id="opcion3">
+													<option value="s">Si</option>
+													<option value="n">No</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="opcion4">Formulario de Contacto</label>
+												<select class="form-control" name="contact-form" id="opcion4">
+													<option value="s">Si</option>
+													<option value="n">No</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="opcion5">Diseño de Imágenes personalizadas</label>
+												<select class="form-control" name="imagenes_propias" id="opcion5">
+													<option value="s">Si</option>
+													<option value="n">No</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="opcion6">Diseño de Logotipo</label>
+												<select class="form-control" name="logo_propio" id="opcion6">
+													<option value="s">Si</option>
+													<option value="n">No</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="opcion6">Multi-idioma</label>
+												<select class="form-control" name="multi_idioma" id="opcion6">
+													<option value="s">Si</option>
+													<option value="n">No</option>
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="Mensaje">Indicanos algunas páginas de referencia</label>
+												<textarea class="form-control" id="mensaje" placeholder="Mensaje" required name="referencia"></textarea>
 											</div>
 											<button class="btn btn-outlined btn-blue2 btn-sm" style="padding-bottom: 1em;float:right; text-align:right;margin-bottom: 10px;" onclick="transitionHandler()" data-wow-delay="0.7s">Siguiente</button>
 											<button class="btn btn-outlined btn-blue2 btn-sm" style="padding-bottom: 1em;float:left; text-align:left;margin-bottom: 10px;" onclick="fuckGoBack()">Atrás</button>
 										</form>
 									</div>
 								</div>
-							</section>
+								<div id="app-Tienda">
+									
+								</div>
+								<div id="app-Desarrollo">
+									
+								</div>
 
+							</section>
 							<section id="contacto">
 								<h4 class="title custom-font text-black" style="font-size: 1.3em; margin-bottom: 0px;">
 									Su respuesta llegará a su correo en menos de 24 horas.
 								</h4>
 								<div class="contact-form">
-									<form role="form" id="ender" method="POST" action="{{route('Cotizacion.storeDesarrolloPersonalizado2')}}" accept-charset="UTF-8" enctype="multipart/form-data">
+
+									<form role="form" id="ender" method="post" action="{{route('Cotizacion.storeWebCorporativa2')}}" accept-charset="UTF-8" enctype="multipart/form-data">
 										<input type="hidden" name="_token" value="{{csrf_token()}}">
 										<div class="form-group">
 											<label for="name">Ingrese su nombre:</label>

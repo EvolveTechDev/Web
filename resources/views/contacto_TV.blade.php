@@ -4,7 +4,7 @@
 	<title>Página web | EVOLVE</title>
 	<link rel="stylesheet" type="text/css" href="{{asset('css/index2.css')}}">
 	<link rel="stylesheet" type="text/css" href="{{asset('css/v.css')}}">
-
+	<link rel="stylesheet" type="text/css" href="{{asset('/css/croc.css')}}">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<meta charset="utf-8">
 	<link rel="shortcut icon" type="image/x-icon" href="{{asset('img/b.png')}}" >
@@ -251,9 +251,9 @@
 								<div id="picker-3">Contacto</div>
 							</header>
 							<section id="proyecto" style="display: flex">
-								<div class="contact-switcher" target="app-Desarrollo">
-									<img src="{{asset('img/servidef23.png')}}">
-									<h4>Desarrollo Personalizado</h4>
+								<div class="contact-switcher" target="app-Tienda">
+									<img src="{{asset('img/servidef22.png')}}">
+									<h4>Tienda Online</h4>
 								</div>
 							</section>
 							<section id="detalles">
@@ -261,40 +261,93 @@
 									
 								</div>
 								<div id="app-Tienda">
-									
-								</div>
-								<div id="app-Desarrollo">
 									<div class="contact-form">
-										<form role="form" method="POST" action="{{route('Cotizacion.storeDesarrolloPersonalizado2')}}" accept-charset="UTF-8" enctype="multipart/form-data" >
+										<form role="form" method="post" action="{{route('Cotizacion.storeTiendaOnline2')}}" accept-charset="UTF-8" enctype="multipart/form-data">
                                             <input type="hidden" name="_token" value="{{csrf_token()}}">
-                                            <div class="form-group">
-												<label for="opcion2">¿Cuántas secciones deseas?</label>
-												<select class="form-control" name="cant-secciones" id="opcion2">
-													<option value="1">1</option>
-													<option value="1-3">1-3</option>
-													<option value="3-5">3-5</option>
-													<option value="5-7">5-7</option>
-													<option value="8-12">8-12</option>
-													<option value="12+">12+</option>
+											<div class="form-group">
+												<label for="opcion">¿Deseas un sistema de catálogos?</label>
+												<select class="form-control" name="catalogo" id="opcion">
+													<option value="s">Si</option>
+													<option value="n">No</option>
+												</select>
+											</div>
+
+											<div class="form-group">
+												<label for="opcion2">Carrito de compra</label>
+												<select class="form-control" name="carito" id="opcion2">
+													<option value="s">Si</option>
+													<option value="n">No</option>
+
 												</select>
 											</div>
 											<div class="form-group">
-												<label>Escribe los requerimientos de tu producto</label>
-												<textarea name="personalized-message" class="form-control"></textarea>
+												<label for="opcion3">Gestión de pago: multiples formas de pago, gastos de envíos, cálculo de impuestos.</label>
+												<select class="form-control" name="gestion_pago" id="opcion3">
+													<option value="s">Si</option>
+													<option value="n">No</option>
+
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="opcion4">Informes de Inventario</label>
+												<select class="form-control" name="inventario" id="opcion4">
+													<option value="s">Si</option>
+													<option value="n">No</option>
+
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="opcion4">Exportación de contabilidad</label>
+												<select class="form-control" name="inventario" id="opcion4">
+													<option value="s">Si</option>
+													<option value="n">No</option>
+
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="opcion5">Generación de facturas</label>
+												<select class="form-control" name="genera_facturas" id="opcion5">
+													<option value="s">Si</option>
+													<option value="n">No</option>
+
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="opcion6">Multidivisa</label>
+												<select class="form-control" name="multidivisa" id="opcion6">
+													<option value="s">Si</option>
+													<option value="n">No</option>
+
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="opcion6">Multi-idioma</label>
+												<select class="form-control" name="multi_idioma" id="opcion6">
+													<option value="s">Si</option>
+													<option value="n">No</option>
+
+												</select>
+											</div>
+											<div class="form-group">
+												<label for="Mensaje">Indicanos algunas páginas de referencia</label>
+												<textarea class="form-control" id="mensaje" placeholder="Mensaje" required name="pags_ref"> </textarea>
 											</div>
 											<button class="btn btn-outlined btn-blue2 btn-sm" style="padding-bottom: 1em;float:right; text-align:right;margin-bottom: 10px;" onclick="transitionHandler()" data-wow-delay="0.7s">Siguiente</button>
 											<button class="btn btn-outlined btn-blue2 btn-sm" style="padding-bottom: 1em;float:left; text-align:left;margin-bottom: 10px;" onclick="fuckGoBack()">Atrás</button>
 										</form>
 									</div>
 								</div>
-							</section>
+								<div id="app-Desarrollo">
 
+								</div>
+
+							</section>
 							<section id="contacto">
 								<h4 class="title custom-font text-black" style="font-size: 1.3em; margin-bottom: 0px;">
 									Su respuesta llegará a su correo en menos de 24 horas.
 								</h4>
 								<div class="contact-form">
-									<form role="form" id="ender" method="POST" action="{{route('Cotizacion.storeDesarrolloPersonalizado2')}}" accept-charset="UTF-8" enctype="multipart/form-data">
+									<form role="form" id="ender" method="post" action="{{route('Cotizacion.storeTiendaOnline2')}}" accept-charset="UTF-8" enctype="multipart/form-data">
 										<input type="hidden" name="_token" value="{{csrf_token()}}">
 										<div class="form-group">
 											<label for="name">Ingrese su nombre:</label>
@@ -486,22 +539,22 @@
 								.join('&')
 						}
 
-						function send() {
-							let parameters = serialize(target) + '&' + serialize('ender') + '&field=' + encodeURIComponent(target)
-							console.log(parameters)
-							fetch('ajaxForm.php?'+parameters)
-								.then(function(res) {
-									return res.json()
-							}),then(function(json) {
-								if (json.success) {
-									alert('Mensaje enviado, revise su correo para obtener acceso al sistema.')
-								} else {
-									alert('error')
-								}
-							}).catch(function() {
-								alert('hubo un error con su petición, verifique su conexión a internet')
-							})
-						}
+						// function send() {
+						// 	let parameters = serialize(target) + '&' + serialize('ender') + '&field=' + encodeURIComponent(target)
+						// 	console.log(parameters)
+						// 	fetch('ajaxForm.php?'+parameters)
+						// 		.then(function(res) {
+						// 			return res.json()
+						// 	}),then(function(json) {
+						// 		if (json.success) {
+						// 			alert('Mensaje enviado, revise su correo para obtener acceso al sistema.')
+						// 		} else {
+						// 			alert('error')
+						// 		}
+						// 	}).catch(function() {
+						// 		alert('hubo un error con su petición, verifique su conexión a internet')
+						// 	})
+						// }
 					</script>
 				</div>
 			</div>

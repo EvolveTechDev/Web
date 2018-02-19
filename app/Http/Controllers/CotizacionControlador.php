@@ -7,10 +7,6 @@ use DB;
 use Carbon\Carbon;
 class CotizacionControlador extends Controller
 {
-
-        function __construct(){
-        $this->middleware('auth');
-    }
     /**
      * Display a listing of the resource.
      *
@@ -82,22 +78,15 @@ class CotizacionControlador extends Controller
         return redirect()->route('cotizacion.index');
     }
 
-        public function storeWebCorporativa2(Request $request) //en el request mandare mi registro con datos
+    //Registro de nueva cotizacion desde pagina principal
+        public function storeWebCorporativa2(Request $request) 
     {
-        //antes de esto hay q hacer lo del plan aqui mismo
-        DB::table('cotizacion')->insert([
-            //aqui falta acomodar los request de la forma $request->input('nombre')
-            "U_id"=>auth()->user()->id,
-            "moneda"=>$request->input('moneda'),
-            "precio"=>200,
-            "fecha_c"=>Carbon::now(),
-            "fecha_s"=>'2018-03-30',
-            "categoria"=>$request->input('tipo_web'),
-            "estatus"=>"Por pagar",
-            "Pl_id"=>1
-        ]);
+        //1._ Crear usuario
+        //2._ Buscar Plan
+        //3._ Crear cotizacion
+        //4._ Enviar correo
 
-        return redirect()->route('cotizacion.index');
+        return "storeWebCorporativa2";
     }
 
     public function storeTiendaOnline(Request $request) //en el request mandare mi registro con datos
@@ -118,22 +107,15 @@ class CotizacionControlador extends Controller
         return redirect()->route('cotizacion.index');
     }
 
-        public function storeTiendaOnline2(Request $request) //en el request mandare mi registro con datos
+    //Registro de nueva cotizacion desde pagina principal
+    public function storeTiendaOnline2(Request $request) 
     {
-        //antes de esto hay q hacer lo del plan aqui mismo
-        DB::table('cotizacion')->insert([
-            //aqui falta acomodar los request de la forma $request->input('nombre')
-            "U_id"=>auth()->user()->id,
-            "moneda"=>$request->input('moneda'),
-            "precio"=>200,
-            "fecha_c"=>Carbon::now(),
-            "fecha_s"=>'2018-03-30',
-            "categoria"=>'Tienda Online',
-            "estatus"=>"Por pagar",
-            "Pl_id"=>1
-        ]);
+        //1._ Crear usuario
+        //2._ Buscar Plan
+        //3._ Crear cotizacion
+        //4._ Enviar correo
 
-        return redirect()->route('cotizacion.index');
+        return "storeTiendaOnline2";
     }
 
     public function storeDesarrolloPersonalizado(Request $request) //en el request mandare mi registro con datos
@@ -154,22 +136,15 @@ class CotizacionControlador extends Controller
         return redirect()->route('cotizacion.index');
     }
 
-        public function storeDesarrolloPersonalizado2(Request $request) //en el request mandare mi registro con datos
+    //Registro de nueva cotizacion desde pagina principal
+    public function storeDesarrolloPersonalizado2(Request $request) 
     {
-        //antes de esto hay q hacer lo del plan aqui mismo
-        DB::table('cotizacion')->insert([
-            //aqui falta acomodar los request de la forma $request->input('nombre')
-            "U_id"=>auth()->user()->id,
-            "moneda"=>$request->input('moneda'),
-            "precio"=>200,
-            "fecha_c"=>Carbon::now(),
-            "fecha_s"=>'2018-03-30',
-            "categoria"=>'Desarrollo Personalizado',
-            "estatus"=>"Por pagar",
-            "Pl_id"=>1
-        ]);
+        //1._ Crear usuario
+        //2._ Buscar Plan
+        //3._ Crear cotizacion
+        //4._ Enviar correo
 
-        return redirect()->route('cotizacion.index');
+        return "storeDesarrolloPersonalizado2";
     }
     /**
      * Display the specified resource.
