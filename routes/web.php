@@ -16,22 +16,13 @@ Route::get('home',['as'=>'proyecto.index', 'uses'=>'ProyectoControlador@index'])
 Route::get('',['as'=>'index', 'uses'=>'PagesController@index']);
 
 //Route::get('Proyectos', ['as'=>'Proyectos', 'uses'=>'PagesController@Proyectos']);
-
 //Route::get('Facturas', ['as'=>'Facturas', 'uses'=>'PagesController@Facturas']);
-
 //Route::get('Cotizaciones', ['as'=>'Cotizaciones', 'uses'=>'PagesController@Cotizaciones']);
-
 //Route::get('upgrade', ['as'=>'upgrade', 'uses'=>'PagesController@upgrade']);
-
 //Route::get('table', ['as'=>'showtable', 'uses'=>'PagesController@table']);
-
 //Route::get('template', ['as'=>'template', 'uses'=>'PagesController@template']);
-
-<<<<<<< HEAD
-=======
 //Route::get('Cotizaciones1', ['as'=>'Cotizaciones1', 'uses'=>'PagesController@Cotizaciones1']);
 
->>>>>>> a33203390eb7225f8a09a40905485dac2bf09050
 //metodos de manipulacion de proyecto
 Route::get('Proyectos/guardar',['as'=>'proyecto.store', 'uses'=>'ProyectoControlador@store']);
 Route::get('Proyectos',['as'=>'proyecto.index', 'uses'=>'ProyectoControlador@index']);
